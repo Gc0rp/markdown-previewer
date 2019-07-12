@@ -7,9 +7,16 @@ import { createGlobalStyle } from 'styled-components';
 import store from './store';
 import App from './components/App2';
 
+import globalStyleSheet from './constants/css/globalStyleSheet';
+
+
+const GlobalStyle = createGlobalStyle`${globalStyleSheet}`;
+
+
 ReactDOM.render(
     <BrowserRouter>
         <Fragment>
+            <GlobalStyle />
             <Provider store={store}>
                 <App />
             </Provider>

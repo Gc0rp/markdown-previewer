@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MarkdownPreview from './MarkdownPreview';
+
 const Container = styled.div `
-    width: 100%;
-    border: 1px solid red;
-    height: auto;
+   outline: 1px solid red;
+   height: 100%;
 `;
 
 const Heading = styled.h1 `
@@ -14,12 +14,17 @@ const Heading = styled.h1 `
 
 const App = () => {
     return(
-        <Container>
+        <div className="container-fluid no-gutters">
             <Heading>
                 Welcome to Markdown Previewer
             </Heading>
+            <div className="row">
+                <div className="col-lg-4">
+                    <p>Editor</p>
+                </div>
+            </div>
             <MarkdownPreview />
-        </Container>
+        </div>
     );
 };
 

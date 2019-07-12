@@ -7,18 +7,17 @@ const Area = styled.div `
 
 const UserText = styled.textarea `
     background-color: #3C140C;
-    width: 50%;
     color: white;
     border: none;
+    width: 50%;
 `;
 
-const GeneratedOutput = styled.textarea `
+const GeneratedOutput = styled.div `
+    width: 50%;
     background-color: blue;
-    width: 50%;
     color: white;
     border: none;
 `;
-
 
 const MarkdownPreview = () => {
     return(
@@ -27,6 +26,6 @@ const MarkdownPreview = () => {
             <GeneratedOutput />
         </Area>
     );
-}
+};
 
 export default MarkdownPreview;
