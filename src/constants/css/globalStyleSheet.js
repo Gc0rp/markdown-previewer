@@ -10,7 +10,7 @@ const RowStyles = `
         width: 100%;
     }
     .row {
-        outline: 1px solid red;
+        outline: 4px solid black;
     }
 
     .col-lg-6 {
