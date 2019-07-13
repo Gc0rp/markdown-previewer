@@ -2,11 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MarkdownPreview from './MarkdownPreview';
-import logo from '../images/edit.png';
 
 const Heading = styled.h1 `
     text-align: center;
-    outline: 1px solid red;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 42px;
+`;
+
+const ScreenTile = styled.div `
+    text-align: right;
+    // outline: 1px solid red;
 `;
 
 const App = () => {
@@ -15,7 +20,7 @@ const App = () => {
             <div className="row">
                 <div className="col-lg-12">
                     <Heading>
-                        Welcome to Markdown Previewer
+                        <strong>Welcome to Markdown Previewer</strong>
                     </Heading>
                 </div>
             </div>
@@ -23,16 +28,25 @@ const App = () => {
             <div className="row">
                 <div className="col-lg-6">
                     <div className="row">
-                        <div className="col-lg-6">
-                            <p>Editor</p>
-                            <img src={logo} alt="Logo"/>
+                        <div className="col-lg-6" style={{display: "flex"}}>
+                            <i className="material-icons">edit</i> 
+                            <p>Editor</p> 
                         </div>
+
+                        <ScreenTile className="col-lg-6">
+                            <button type="button" className="btn btn-default">
+                                <i className="material-icons"> fullscreen </i>
+                            </button>
+                        </ScreenTile>                       
                     </div>
 
                 </div>
 
                 <div className="col-lg-6">
                     <p>Previewer</p>
+                    <i class="material-icons">
+computer
+</i>
                 </div>
             </div>
 

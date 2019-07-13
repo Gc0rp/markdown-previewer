@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 
 const UserText = styled.textarea `
-    background-color: #3C140C;
+    background-color: #473144;
     color: white;
     border: none;
     width: 100%;
@@ -15,7 +15,7 @@ const UserText = styled.textarea `
 
 const GeneratedOutput = styled.div `
     width: 100%;
-    background-color: blue;
+    background-color: #EFC69B;
     color: white;
     border: none;
     min-height: 50vh;
