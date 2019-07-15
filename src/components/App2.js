@@ -43,11 +43,23 @@ const App = () => {
                 </div>
 
                 <div className="col-lg-6">
-                    <p>Previewer</p>
-                    <i class="material-icons">
-computer
-</i>
+                    <div className="row">
+                    
+                        <div className="col-lg-6" style={{display: "flex"}}>
+                            <p>Previewer</p>
+                            <i className="material-icons">computer</i>
+                        </div>
+
+                        <ScreenTile className="col-lg-6">
+                            <button type="button" className="btn btn-default">
+                                <i className="material-icons"> fullscreen </i>
+                            </button>
+                        </ScreenTile> 
+                    
+                    </div>
+                
                 </div>
+                
             </div>
 
             <MarkdownPreview />            
