@@ -22,7 +22,7 @@ const GeneratedOutput = styled.div `
     margin: 15px auto;
 `;
 
-class RenderText extends React.Component {
+class UserInput extends React.Component {
 
     constructor(props){
         super(props);
@@ -32,18 +32,18 @@ class RenderText extends React.Component {
         };
 
         this.textChange= this.textChange.bind(this);
+        this.makeDiv = this.makeDiv.bind(this);
     }
 
     textChange(event){
 
         this.setState({
             text: event.target.value
-        });
-        console.log(marked(this.state.text));
+        });        
     }
 
     render() {
-        const text = marked(this.state.text);
+        const rt = marked(this.state.text);
         return(
             <div className="row">
                 <div className="col-lg-6">  
@@ -51,11 +51,11 @@ class RenderText extends React.Component {
                 </div>
 
                 <div className="col-lg-6">
-                    <GeneratedOutput>
-                        {text}
-                        <h1>Testing Text</h1>
-                    </GeneratedOutput>
+                    
+                    <GeneratedOutput dangerouslySetInnerHTML={{ __html: rt }} />
+                   
                 </div>
+
             </div>
         );
     }
@@ -63,7 +63,7 @@ class RenderText extends React.Component {
 
 const MarkdownPreview = () => {
     return(
-        <RenderText />        
+        <UserInput />        
     );
 };
 
