@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import styled from 'styled-components';
 import marked from 'marked';
+
+import Header from './Header';
 
 const UserText = styled.textarea `
     background-color: #473144;
     color: white;
     border: none;
-    width: 100%;
+    width: 100%; 
     padding: 10px;
     min-height: 50vh;
     margin: 15px auto;
@@ -22,7 +24,7 @@ const GeneratedOutput = styled.div `
     margin: 15px auto;
 `;
 
-class UserInput extends React.Component {
+class MarkdownPreview extends React.Component {
 
     constructor(props){
         super(props);
@@ -32,7 +34,6 @@ class UserInput extends React.Component {
         };
 
         this.textChange= this.textChange.bind(this);
-        this.makeDiv = this.makeDiv.bind(this);
     }
 
     textChange(event){
@@ -45,6 +46,8 @@ class UserInput extends React.Component {
     render() {
         const rt = marked(this.state.text);
         return(
+            <Fragment>
+                <Header />
             <div className="row">
                 <div className="col-lg-6">  
                     <UserText onChange={this.textChange} value={this.state.text}/>
@@ -53,18 +56,14 @@ class UserInput extends React.Component {
                 <div className="col-lg-6">
                     
                     <GeneratedOutput dangerouslySetInnerHTML={{ __html: rt }} />
-                   
+
                 </div>
 
             </div>
+            </Fragment>
+            
         );
     }
 }
-
-const MarkdownPreview = () => {
-    return(
-        <UserInput />        
-    );
-};
 
 export default MarkdownPreview;

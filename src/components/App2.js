@@ -9,11 +9,6 @@ const Heading = styled.h1 `
     font-size: 42px;
 `;
 
-const ScreenTile = styled.div `
-    text-align: right;
-    // outline: 1px solid red;
-`;
-
 const App = () => {
     return(
         <div className="container-fluid">
@@ -23,43 +18,6 @@ const App = () => {
                         <strong>Welcome to Markdown Previewer</strong>
                     </Heading>
                 </div>
-            </div>
-            
-            <div className="row">
-                <div className="col-lg-6">
-                    <div className="row">
-                        <div className="col-lg-6" style={{display: "flex"}}>
-                            <i className="material-icons">edit</i> 
-                            <p>Editor</p> 
-                        </div>
-
-                        <ScreenTile className="col-lg-6">
-                            <button type="button" className="btn btn-default">
-                                <i className="material-icons"> fullscreen </i>
-                            </button>
-                        </ScreenTile>                       
-                    </div>
-
-                </div>
-
-                <div className="col-lg-6">
-                    <div className="row">
-                    
-                        <div className="col-lg-6" style={{display: "flex"}}>
-                            <p>Previewer</p>
-                            <i className="material-icons">computer</i>
-                        </div>
-
-                        <ScreenTile className="col-lg-6">
-                            <button type="button" className="btn btn-default">
-                                <i className="material-icons"> fullscreen </i>
-                            </button>
-                        </ScreenTile> 
-                    
-                    </div>
-                
-                </div>
-                
             </div>
 
             <MarkdownPreview />            
