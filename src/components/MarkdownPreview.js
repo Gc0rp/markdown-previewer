@@ -2,13 +2,15 @@ import React, {Fragment} from 'react';
 import styled from 'styled-components';
 import marked from 'marked';
 
+import defaultMarkdownCode from '../constants/defaultMarkdownCode';
+
 const UserText = styled.textarea `
     background-color: #473144;
     color: white;
     border: none;
     width: 100%; 
     padding: 10px;
-    min-height: 50vh;
+    min-height: 100vh;
     margin: 15px auto;
 `;
 
@@ -18,7 +20,7 @@ const GeneratedOutput = styled.div `
     color: white;
     border: none;
     padding: 10px;
-    min-height: 50vh;
+    min-height: 100vh;
     margin: 15px auto;
 `;
 
@@ -33,16 +35,16 @@ class MarkdownPreview extends React.Component {
         super(props);
 
         this.state = {
-            text : '',
+            text : '{$defaultMarkdownCode}',
             userFullScreen : false,
             displayRender: "visible",
             renderFullScreen: false,
-            displayUserInput: true
+            displayUserInput: "visible"
         };
 
         this.textChange= this.textChange.bind(this);
         this.toggleUserFullScreen = this.toggleUserFullScreen.bind(this);
-        // this.toggleRenderFullScreen = this.toggleRenderFullScreen.bind(this);
+        this.toggleRenderFullScreen = this.toggleRenderFullScreen.bind(this);
     }
 
     textChange(event){
@@ -59,10 +61,23 @@ class MarkdownPreview extends React.Component {
 
         if(this.state.displayRender === "visible") {
             this.state.displayRender = "hidden";
+
         } else {
             this.state.displayRender = "visible";
         }
 
+    }
+
+    toggleRenderFullScreen(){
+        this.setState({
+            renderFullScreen: !this.state.renderFullScreen
+        });
+
+        if(this.state.displayUserInput === "visible") {
+            this.state.displayUserInput = "hidden";
+        } else {
+            this.state.displayUserInput = "visible";
+        }
     }
 
     render() {
@@ -70,8 +85,9 @@ class MarkdownPreview extends React.Component {
         return(
             <Fragment>
                 <div className="row">
-                    <div className={this.state.userFullScreen ? "col-lg-12" : "col-lg-6"}>
-                        <div className="row">
+                    <div className={this.state.userFullScreen ? "col-lg-12" : "col-lg-6"}
+                        style={{visibility: this.state.displayUserInput}}>
+                        <div className="row" >
                             <div className="col-lg-6" style={{display: "flex"}}>
                                 <i className="material-icons">edit</i> 
                                 <p>Editor</p> 
@@ -86,15 +102,16 @@ class MarkdownPreview extends React.Component {
                         </div>
                     </div>
 
-                    <div className={this.state.renderFullScreen ? "col-lg-12" : "col-lg-6"} 
-                    style={{visibility: this.state.displayRender}}>
+                    <div className={this.state.renderFullScreen ? "col-lg-12" : "col-lg-6"}
+                        style={{visibility : this.state.displayRender}}>
                         <div className="row">
                             <div className="col-lg-6" style={{display: "flex"}}>
                                 <p>Previewer</p>
                                 <i className="material-icons">computer</i>
                             </div>
                             <ScreenTile className="col-lg-6">
-                                <button type="button" className="btn btn-default">
+                                <button type="button" className="btn btn-default" 
+                                    onClick={this.toggleRenderFullScreen}>
                                     <i className="material-icons"> fullscreen </i>
                                 </button>
                             </ScreenTile> 
@@ -104,14 +121,17 @@ class MarkdownPreview extends React.Component {
                 </div>
 
                 <div className="row">
-                    <div className={this.state.userFullScreen ? "col-lg-12" : "col-lg-6"}>  
-                        <UserText onChange={this.textChange} value={this.state.text}/>
-                    </div>
-                    
-                    <div className="col-lg-6">
+                    {this.state.displayUserInput === "visible" && <div className={this.state.userFullScreen 
+                        ? "col-lg-12" : "col-lg-6"}>  
+                        <UserText onChange={this.textChange} value={this.state.text}
+                            style={{visibility : this.state.displayUserInput}} id="editor"/>
+                    </div> }
+
+                    {this.state.displayRender === "visible" && <div className={this.state.renderFullScreen 
+                        ? "col-lg-12" : "col-lg-6"}>
                         <GeneratedOutput dangerouslySetInnerHTML={{ __html: rt }} 
-                            style={{visibility: this.state.displayRender}}/>
-                    </div>
+                            style={{visibility : this.state.displayRender}} id="preview"/>
+                    </div> }
                 </div>
             </Fragment>
             
