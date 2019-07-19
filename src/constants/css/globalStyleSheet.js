@@ -31,6 +31,12 @@ const RowStyles = `
         background-color:#AF1B3F;
     }
 
+    blockquote {
+        border-left: 5px solid #AF1B3F;
+        padding: 5px;
+        margin-left: 20px;
+    }
+
 `;
 
 export default RowStyles;

@@ -21,6 +21,8 @@ const GeneratedOutput = styled.div `
     border: none;
     padding: 10px;
     min-height: 100vh;
+    max-height: 100vh;
+    overflow: auto;
     margin: 15px auto;
 `;
 
@@ -35,7 +37,7 @@ class MarkdownPreview extends React.Component {
         super(props);
 
         this.state = {
-            text : '{$defaultMarkdownCode}',
+            text : defaultMarkdownCode,
             userFullScreen : false,
             displayRender: "visible",
             renderFullScreen: false,
