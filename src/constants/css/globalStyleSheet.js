@@ -37,6 +37,18 @@ const RowStyles = `
         margin-left: 20px;
     }
 
+    ul ul {
+        padding-left: 10px;
+    }
+
+    ul ul ul {
+        padding-left: 10px;
+    }
+
+    ol{
+        padding-left: 5px;
+    }
+
 `;
 
 export default RowStyles;

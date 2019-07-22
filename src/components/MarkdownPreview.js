@@ -19,7 +19,7 @@ const GeneratedOutput = styled.div `
     background-color: #EFC69B;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 20px;
     min-height: 100vh;
     max-height: 100vh;
     overflow: auto;
