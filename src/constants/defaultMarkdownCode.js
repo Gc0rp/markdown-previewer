@@ -23,8 +23,6 @@ And feel free to go crazy ~~crossing stuff out~~.
 There's also [links](https://www.google.com), and
 > Block Quotes!
   
-  <br>
-  <br>
 
   - And of course there are lists.
   - Some are bulleted.

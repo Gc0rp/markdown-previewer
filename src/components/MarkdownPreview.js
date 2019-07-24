@@ -47,13 +47,30 @@ class MarkdownPreview extends React.Component {
         this.textChange= this.textChange.bind(this);
         this.toggleUserFullScreen = this.toggleUserFullScreen.bind(this);
         this.toggleRenderFullScreen = this.toggleRenderFullScreen.bind(this);
+
+        const m = require('marked');
+        
+        const renderer = new marked.Renderer();
+
+        renderer.link = (href, title, text) => {
+
+            return `
+                <a href="${href}" target="_blank">
+                    ${text}
+                </a>
+            `;
+        };
+
+        m.setOptions({
+            renderer,
+            breaks: true
+        });
     }
 
     textChange(event){
-
         this.setState({
             text: event.target.value
-        });        
+        });
     }
 
     toggleUserFullScreen(){
@@ -84,7 +101,9 @@ class MarkdownPreview extends React.Component {
 
     render() {
         const rt = marked(this.state.text);
-        return(
+
+        
+        return(     
             <Fragment>
                 <div className="row">
                     <div className={this.state.userFullScreen ? "col-lg-12" : "col-lg-6"}
